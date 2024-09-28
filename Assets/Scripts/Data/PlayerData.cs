@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData
-{
-    public string playerName;
-    
-    //物品欄
-    public List<ObjectData> objectDataList = new List<ObjectData>();
+public class PlayerData: Character
+{        
+    public List<ObjectData> objectDataList;//物品欄
 
-
+    public PlayerData(int _id, string _playerName):base(_id,_playerName)
+    {
+        objectDataList = new List<ObjectData>();
+    }
 }
