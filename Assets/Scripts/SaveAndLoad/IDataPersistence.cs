@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IDataPersistence
-{
-    void SaveData();
-    void LoadData();
+{   
+    void LoadData(GameData date);
+    void SaveData(ref GameData date);
 }
