@@ -7,8 +7,6 @@ using UnityEngine;
 /// </summary>
 public class PlayerTime
 {
-
-
     private int maxTime;// 最大時間：表示玩家可以擁有的最大時間量   
     private int currentTime;// 當前時間：表示玩家當前擁有的時間量
 
@@ -26,8 +24,9 @@ public class PlayerTime
     public int CurrentTime
     {
         get { return currentTime; }
+        set { currentTime = value;}
     }
-
+   
     /// <summary>
     /// 設置時間，初始化最大時間並將當前時間設置為最大時間
     /// </summary>

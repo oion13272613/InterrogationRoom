@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;//
+using System.Linq;
+using UnityEngine.UI;
 
 /// <summary>
 /// 資料持久化管理器
@@ -16,12 +17,25 @@ public class DataPersistenceManger : MonoSingleton<DataPersistenceManger>
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
+    public Button saveButton;  // SAVE 按鈕
+    public Button loadButton;  // LOAD 按鈕
 
     private void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath,fileName, useEncyption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
+
+        // 綁定按鈕點擊事件
+        if (saveButton != null)
+        {
+            saveButton.onClick.AddListener(SaveGame);
+        }
+
+        if (loadButton != null)
+        {
+            loadButton.onClick.AddListener(LoadGame);
+        }
     }
 
     public void NewGame()
@@ -62,6 +76,4 @@ public class DataPersistenceManger : MonoSingleton<DataPersistenceManger>
 
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
-
-
 }

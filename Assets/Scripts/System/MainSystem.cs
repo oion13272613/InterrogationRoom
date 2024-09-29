@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 總管理器：對話、時間、血量
 /// </summary>
-public class MainSystem : MonoSingleton<MainSystem>
+public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
 {
     // 物品欄視窗的 GameObject，控制物品欄的顯示與隱藏
     public GameObject inventoryWindow;
@@ -37,6 +37,7 @@ public class MainSystem : MonoSingleton<MainSystem>
 
     private DialogueGroupData previousTextData;//前一個TextData
     private bool isTalking = false;
+    
     public bool IsTalking 
     { 
         get { return isTalking; }
@@ -186,12 +187,37 @@ public class MainSystem : MonoSingleton<MainSystem>
         RunCurentDialogue();
     }
 
-
     // 設置並開始執行當前對話
     private void RunCurentDialogue()
     {
         IsTalking = true;
         DialogueSystem.instance.SetDialogue(currentDialogueGroupData);
         DialogueSystem.instance.StartDialogue();
+    } 
+    public void LoadData(GameData data)
+    {
+        this.playerTime.CurrentTime = data.currentTime;
+        this.opponentHeart.CurrentHeart = data.currentHeart;
+        // 根據存檔的對話ID，找到並恢復當前對話數據
+        this.currentDialogueGroupData = FindTextDataFromList(data.currentDialogueGroupDataID);
+
+        // 若無法找到對應的對話數據，可以設置一個默認值
+        if (this.currentDialogueGroupData == null && textDataList.Count > 0)
+        {
+            this.currentDialogueGroupData = textDataList[0]; // 恢復第一個對話
+        }
+
+        // 開始恢復對話
+        RunCurentDialogue();
+    }
+    public void SaveData(ref GameData data) 
+    {
+        data.currentTime = this.playerTime.CurrentTime;
+        data.currentHeart = this.opponentHeart.CurrentHeart;
+        // 儲存當前對話數據的ID
+        if (currentDialogueGroupData != null)
+        {
+            data.currentDialogueGroupDataID = currentDialogueGroupData.textID;
+        }
     }
 }

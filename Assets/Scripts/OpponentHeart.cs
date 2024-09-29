@@ -25,6 +25,7 @@ public class OpponentHeart
     public int CurrentHeart
     {
         get { return currentHeart; }
+        set { currentHeart = value;}
     }
 
     /// <summary>
