@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextFile: {fileID: 4900000, guid: c3e5ca4207b280549aa7d79199d8026f, type: 3}
   textID: 1
-  textTrueID: 3
-  textFalseID: 1
+  textTrueID: 15
+  textFalseID: 2
   ObjectTrueID: 15
   isCorrectText: 1

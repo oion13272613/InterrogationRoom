@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 01
   m_EditorClassIdentifier: 
   TextFile: {fileID: 4900000, guid: cf65a95b89742c04d9fb1630673e2826, type: 3}
-  textID: 3
+  textID: 15
   textTrueID: 1
   textFalseID: 2
   ObjectTrueID: 15

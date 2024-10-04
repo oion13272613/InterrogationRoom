@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,11 @@ using UnityEngine;
 /// <summary>
 /// 管理玩家的時間狀態，包括最大時間和當前時間。提供設置、減少和重置時間的功能。
 /// </summary>
+[Serializable]
 public class PlayerTime
 {
-    private int maxTime;// 最大時間：表示玩家可以擁有的最大時間量   
-    private int currentTime;// 當前時間：表示玩家當前擁有的時間量
+    [SerializeField] private int maxTime;// 最大時間：表示玩家可以擁有的最大時間量   
+    [SerializeField] private int currentTime;// 當前時間：表示玩家當前擁有的時間量
 
     /// <summary>
     /// 最大時間的公開只讀屬性

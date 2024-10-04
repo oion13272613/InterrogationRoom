@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,12 @@ using UnityEngine;
 /// <summary>
 /// 管理對手的血量，包括最大血量和當前血量。提供設置、減少和重置血量的功能。
 /// </summary>
+[Serializable]
 public class OpponentHeart
 {
-    
-    private int maxHeart;// 最大血量：表示對手可以擁有的最大血量    
-    private int currentHeart;// 當前血量：表示對手當前擁有的血量
+
+    [SerializeField] private int maxHeart;// 最大血量：表示對手可以擁有的最大血量    
+    [SerializeField] private int currentHeart;// 當前血量：表示對手當前擁有的血量
 
     /// <summary>
     /// 最大血量的公開只讀屬性

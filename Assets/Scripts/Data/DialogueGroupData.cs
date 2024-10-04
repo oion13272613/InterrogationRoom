@@ -20,5 +20,5 @@ public class DialogueGroupData : ScriptableObject
     public DialogueGroupData()
     {
         
-    }
+    }  
 }

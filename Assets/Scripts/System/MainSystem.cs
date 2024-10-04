@@ -52,8 +52,10 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     {
         IsTalking = false;
 
-        playerTime.SetTime(initialPlayerTime); // 設置玩家的初始時間
-        opponentHeart.SetHeart(initialOpponentHeart); // 設置對手的初始血量
+        //playerTime.SetTime(initialPlayerTime); // 設置玩家的初始時間
+        //opponentHeart.SetHeart(initialOpponentHeart); // 設置對手的初始血量
+
+        ShowState();
 
         // 隱藏物品欄視窗
         inventoryWindow.SetActive(false);
@@ -196,14 +198,16 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     } 
     public void LoadData(GameData data)
     {
-        this.playerTime.CurrentTime = data.currentTime;
-        this.opponentHeart.CurrentHeart = data.currentHeart;
+        this.playerTime = data.playerTime;
+        this.opponentHeart = data.opponentHeart;
+        ShowState();
         // 根據存檔的對話ID，找到並恢復當前對話數據
-        this.currentDialogueGroupData = FindTextDataFromList(data.currentDialogueGroupDataID);
+        this.currentDialogueGroupData = FindTextDataFromList(data.currentDialogueDataID);
 
         // 若無法找到對應的對話數據，可以設置一個默認值
         if (this.currentDialogueGroupData == null && textDataList.Count > 0)
         {
+            Debug.LogWarning("若無法找到對應的對話數據，可以設置一個默認值");
             this.currentDialogueGroupData = textDataList[0]; // 恢復第一個對話
         }
 
@@ -212,12 +216,12 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     }
     public void SaveData(ref GameData data) 
     {
-        data.currentTime = this.playerTime.CurrentTime;
-        data.currentHeart = this.opponentHeart.CurrentHeart;
+        data.playerTime = this.playerTime;
+        data.opponentHeart = this.opponentHeart;
         // 儲存當前對話數據的ID
         if (currentDialogueGroupData != null)
         {
-            data.currentDialogueGroupDataID = currentDialogueGroupData.textID;
+            data.currentDialogueDataID = currentDialogueGroupData.textID;
         }
     }
 }

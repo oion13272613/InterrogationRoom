@@ -7,14 +7,14 @@ public class GameData//遊戲中所有需要被存檔的資料
 {
     //OpponentData
     //ObjectData
-    public int currentTime;
-    public int currentHeart;
-    public int currentDialogueGroupDataID;
+    public PlayerTime playerTime;
+    public OpponentHeart opponentHeart;
+    public int currentDialogueDataID;
 
     public GameData()
     {
-        this.currentTime = 5;   
-        this.currentHeart = 5;
-        this.currentDialogueGroupDataID = 0;
+        this.playerTime = new PlayerTime(); 
+        this.opponentHeart = new OpponentHeart();
+        this.currentDialogueDataID = 0;
     }
 }

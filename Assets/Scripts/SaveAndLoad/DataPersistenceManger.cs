@@ -11,7 +11,7 @@ public class DataPersistenceManger : MonoSingleton<DataPersistenceManger>
 {
     [Header("ÀÉ®×Àx¦s°t¸m")]
     [SerializeField] private string fileName;
-
+    [SerializeField] private string dataPath;
     [SerializeField] private bool useEncyption;
 
     private GameData gameData;
@@ -19,10 +19,12 @@ public class DataPersistenceManger : MonoSingleton<DataPersistenceManger>
     private FileDataHandler dataHandler;
     public Button saveButton;  // SAVE «ö¶s
     public Button loadButton;  // LOAD «ö¶s
+    
 
     private void Start()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath,fileName, useEncyption);
+        dataPath = Application.persistentDataPath;
+        this.dataHandler = new FileDataHandler(dataPath, fileName, useEncyption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
 

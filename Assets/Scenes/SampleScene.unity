@@ -1682,6 +1682,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryWindow: {fileID: 269113437}
   inventoryBotton: {fileID: 1251714194}
+  playerTime:
+    maxTime: 0
+    currentTime: 0
+  opponentHeart:
+    maxHeart: 0
+    currentHeart: 0
   initialPlayerTime: 5
   initialOpponentHeart: 5
   TimeText: {fileID: 239523361}
@@ -2872,7 +2878,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4125331028256638758, guid: 464b11f2b454ad24a8ec8b0f2d16f755, type: 3}
       propertyPath: fileName
-      value: data.game
+      value: data.json
       objectReference: {fileID: 0}
     - target: {fileID: 4125331028256638758, guid: 464b11f2b454ad24a8ec8b0f2d16f755, type: 3}
       propertyPath: loadButton
@@ -2884,7 +2890,7 @@ PrefabInstance:
       objectReference: {fileID: 1610001968}
     - target: {fileID: 4125331028256638758, guid: 464b11f2b454ad24a8ec8b0f2d16f755, type: 3}
       propertyPath: useEncyption
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8173821797528525823, guid: 464b11f2b454ad24a8ec8b0f2d16f755, type: 3}
       propertyPath: m_RootOrder
