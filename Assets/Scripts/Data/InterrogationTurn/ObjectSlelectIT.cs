@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Level 
+public class ObjectSlelectIT : InterrogationTurn
 {
-    Test,
-    BadHabits,
-    Victim,
+    public int ObjectID;
 }
