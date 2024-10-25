@@ -271,28 +271,7 @@ public class InventorySystem : MonoSingleton<InventorySystem>
             //Debug.Log(itemRelativePosition);
             scrollRect.horizontalNormalizedPosition = Mathf.Clamp01(scrollRect.horizontalNormalizedPosition); // 確保在 0 和 1 之間
             // 針對 UI 進行重建以確保更新
-            Canvas.ForceUpdateCanvases();
-
-            //// 獲取選取物品的 RectTransform（物品矩形變換）
-            //RectTransform itemRectTransform = selectedObj.GetComponent<RectTransform>();
-
-            //// 獲取 Scroll Rect 的視口（視口）
-            //RectTransform viewport = scrollRect.viewport;
-
-            //// 將物品的位置轉換為視口的本地位置（視口內部座標）
-            //Vector3 viewportLocalPos = viewport.InverseTransformPoint(itemRectTransform.position);
-
-            //// 計算物品中心與視口中心的差異
-            //float viewportWidth = viewport.rect.width; // 視口寬度
-            //float itemCenterX = viewportLocalPos.x; // 物品中心 X 座標，相對於視口的位置
-
-            //// 計算相對偏移量，這裡考慮視口的寬度，直接計算需要調整的 scrollRect 的位置（標準化偏移量）
-            //float normalizedOffset = itemCenterX / viewportWidth;
-
-            //// 調整 Scroll Rect 的水平位置，使用 Mathf.Clamp01 來限制範圍
-            //scrollRect.horizontalNormalizedPosition = Mathf.Clamp01(scrollRect.horizontalNormalizedPosition + normalizedOffset);
-
-
+            Canvas.ForceUpdateCanvases();        
         }
     }
     // 提交選擇的物件
