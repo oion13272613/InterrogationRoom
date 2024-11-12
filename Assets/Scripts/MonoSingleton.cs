@@ -1,19 +1,19 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ³æ¨Ò¼Ò¦¡
-/// ¥Øªº¡G®e©ö³X°İ¥B°ß¤@
+/// å–®ä¾‹æ¨¡å¼
+/// ç›®çš„ï¼šå®¹æ˜“è¨ªå•ä¸”å”¯ä¸€
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
-    //where T : MonoBehaviour ¤@©w­nÄ~©ÓMonoBehaviour
+    //where T : MonoBehaviour ä¸€å®šè¦ç¹¼æ‰¿MonoBehaviour
 {
-    private static T m_instance;//instance¹ê¨Ò
+    private static T m_instance;//instanceå¯¦ä¾‹
 
     /// <summary>
-    /// ¦pªG¹ê¨Ò¬°ªÅ¡A§ä¨ì¹ê¨Ò
+    /// å¦‚æœå¯¦ä¾‹ç‚ºç©ºï¼Œæ‰¾åˆ°å¯¦ä¾‹
     /// </summary>
     public static T instance
     {
@@ -22,20 +22,20 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
             if (m_instance == null)
             {
                 m_instance = FindObjectOfType<T>();
-                //§äªx«¬(<T>)¤¤Ãş§Oªºª«¥ó(²Ä¤@­Ó)¡A¨Ã¦^¶Ç¦¹¥Ç¦æ¤§Ãş§O
+                //æ‰¾æ³›å‹(<T>)ä¸­é¡åˆ¥çš„ç‰©ä»¶(ç¬¬ä¸€å€‹)ï¼Œä¸¦å›å‚³æ­¤çŠ¯è¡Œä¹‹é¡åˆ¥
             }
             return m_instance;
         }
 
     }
     /// <summary>
-    /// Á×§K­«½Æ§ä¨ì¹ê¨Ò
+    /// é¿å…é‡è¤‡æ‰¾åˆ°å¯¦ä¾‹
     /// </summary>
     private void Awake()
     {
         if (m_instance != null)
         {
-            Destroy(this.gameObject);//Destroyª«¥ó®ø°£¨ç¼Æ
+            Destroy(this.gameObject);//Destroyç‰©ä»¶æ¶ˆé™¤å‡½æ•¸
         }
     }
 

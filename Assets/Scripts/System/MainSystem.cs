@@ -127,19 +127,19 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     {
         CloseInventoryWindow();
 
-        //// 檢查提交的 ID 是否匹配當前對話數據的正確 ID
-        //if (currentDialogueData.ObjectTrueID == id)
-        //{
-        //    // 匹配則選擇下一個正確對話
-        //    nextTextData = FindTextDataFromList(currentDialogueData.textTrueID);
-        //    ReduceHeart();
-        //}
-        //else
-        //{
-        //    // 不匹配則選擇錯誤對話
-        //    nextTextData = FindTextDataFromList(currentDialogueData.textFalseID);
-        //    ReduceTime();
-        //}
+        // 檢查提交的 ID 是否匹配當前對話數據的正確 ID
+        if (currentDialogueData.ObjectTrueID == id)
+        {
+            // 匹配則選擇下一個正確對話
+            nextTextData = FindTextDataFromList(currentDialogueData.textTrueID);
+            ReduceHeart();
+        }
+        else
+        {
+            // 不匹配則選擇錯誤對話
+            nextTextData = FindTextDataFromList(currentDialogueData.textFalseID);
+            ReduceTime();
+        }
 
         previousTextData = currentDialogueData;
 
@@ -155,21 +155,21 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     /// </summary>
     /// <param name="id">對話數據的 ID</param>
     /// <returns>找到的對話數據</returns>
-    //private DialogueGroupData FindTextDataFromList(int id)
-    //{
-    //    DialogueGroupData textData = null;
+    private DialogueGroupData FindTextDataFromList(int id)
+    {
+        DialogueGroupData textData = null;
 
-    //    foreach (DialogueGroupData item in textDataList)
-    //    {
-    //        if (item.textID == id)
-    //        {
-    //            textData = item;
-    //            break;
-    //        }
-    //    }
+        foreach (DialogueGroupData item in textDataList)
+        {
+            if (item.textID == id)
+            {
+                textData = item;
+                break;
+            }
+        }
 
-    //    return textData;
-    //}
+        return textData;
+    }
 
     /// <summary>
     /// 當前對話組結束時的處理
@@ -180,16 +180,16 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
 
         if (currentDialogueData == null) return;
 
-        //if (!currentDialogueData.isCorrectText)
-        //{
-        //    Debug.Log("重複對話");
-        //    currentDialogueData = previousTextData;
-        //    RunCurentDialogue();
-        //}
-        //else
-        //{
-        //    IsTalking = false;
-        //}
+        if (!currentDialogueData.isCorrectText)
+        {
+            Debug.Log("重複對話");
+            currentDialogueData = previousTextData;
+            RunCurentDialogue();
+        }
+        else
+        {
+            IsTalking = false;
+        }
     }
 
     /// <summary>
@@ -228,8 +228,8 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
         this.opponentHeart = data.opponentHeart;
         ShowState();
 
-        // 根據存檔的對話ID，找到並恢復當前對話數據
-        //this.currentDialogueData = FindTextDataFromList(data.currentDialogueDataID);
+        //根據存檔的對話ID，找到並恢復當前對話數據
+        this.currentDialogueData = FindTextDataFromList(data.currentDialogueDataID);
 
         if (this.currentDialogueData == null && textDataList.Count > 0)
         {
@@ -248,9 +248,9 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
         data.playerTime = this.playerTime;
         data.opponentHeart = this.opponentHeart;
 
-        //if (currentDialogueData != null)
-        //{
-        //    data.currentDialogueDataID = currentDialogueData.textID;
-        //}
+        if (currentDialogueData != null)
+        {
+            data.currentDialogueDataID = currentDialogueData.currentspeech.speaker.ID;
+        }
     }
 }

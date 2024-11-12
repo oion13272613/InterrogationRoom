@@ -12,7 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8ca03c45235ca44b7dbdcf660a487c, type: 3}
   m_Name: "\u6E2C\u8A66"
   m_EditorClassIdentifier: 
-  speechList: []
+  speechList:
+  - speaker: {fileID: 11400000, guid: c57833d5476543448b745dc4e2e33a61, type: 2}
+    content:
+    - line: 11111111111111111111111
+    - line: 222222222222222222
+    - line: 333333333333333333
+    - line: 44444444444
+    isRead: 0
+  - speaker: {fileID: 11400000, guid: c913972abd77ddf4985d785d8086e0fd, type: 2}
+    content:
+    - line: 11111111111111111111111
+    - line: 222222222222222222
+    - line: 333333333333333333
+    - line: 44444444444
+    isRead: 0
   currentspeech:
     speaker: {fileID: 0}
     content: []

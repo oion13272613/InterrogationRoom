@@ -67,4 +67,19 @@ public class CharacterDataBaseSystem : MonoSingleton<CharacterDataBaseSystem>
             return character.characterName;
         }
     }
+
+    public Character NameToCharacter(string _name)
+    {
+        Character character = CharacterDBList.Find((Character _character) => (_character.characterName == _name));
+
+        if(character == null)
+        {
+            Debug.LogErrorFormat($"找不到{_name}對應的角色");
+            return null;
+        }
+        else
+        {
+            return character;
+        }    
+    }  
 }

@@ -6,5 +6,10 @@ using UnityEngine;
 [Serializable]
 public class Sentence
 {  
-    public string line;  
+    public string line;
+
+    public Sentence(string _line)
+    {
+        line = _line;
+    }
 }

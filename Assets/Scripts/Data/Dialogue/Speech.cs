@@ -16,4 +16,11 @@ public class Speech
         content = new List<Sentence>();
         isRead = false;
     }
+
+    public Speech(Character _speaker, List<Sentence> _content)
+    {
+        speaker = _speaker;
+        content = _content;
+        isRead = false;
+    }
 }
