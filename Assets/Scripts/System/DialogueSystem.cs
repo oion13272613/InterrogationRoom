@@ -69,10 +69,18 @@ public class DialogueSystem : MonoSingleton<DialogueSystem>
             return; // 提前返回
         }
 
+        speechList = textData.speechList;
+
+        // 檢查對話列表是否為空
+        if (speechList == null || speechList.Count == 0)
+        {
+            Debug.LogError("對話列表為空！");
+            return;
+        }
+
         isTypeOver = false; // 將逐字顯示狀態設置為未完成
         currentDialogueDataIndex = 0; // 對話數據索引初始化為 0
         contentIndex = 0; // 對話中的索引初始化
-        speechList = textData.speechList;
         currentSpeech = speechList[currentDialogueDataIndex]; // 獲取第一組對話數據
         ShowCurrentDialogueData(); // 顯示當前的對話資料
     }
@@ -150,7 +158,7 @@ public class DialogueSystem : MonoSingleton<DialogueSystem>
         }
         else
         {
-            MainSystem.instance.DialogueGroupOver(); // 通知主系統對話結束
+            MainSystem.instance.DialogueTurnOver(); // 通知主系統對話結束
             return; // 提前返回
         }
         isTypeOver = false; // 重置逐字顯示狀態

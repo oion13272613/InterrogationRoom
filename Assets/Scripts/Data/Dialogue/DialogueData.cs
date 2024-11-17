@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "NewDialogueData", menuName = "Create SO/DialogueData")]
 [Serializable] // 標記這個類別可以被序列化，以便於保存和編輯
+[CreateAssetMenu(fileName = "NewDialogueData", menuName = "Create SO/DialogueData")]
 public class DialogueData : ScriptableObject
 {
     public List<Speech> speechList;

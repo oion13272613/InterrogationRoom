@@ -1,47 +1,47 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable] // ¼Ğ°O³o­ÓÃş§O¥i¥H³Q§Ç¦C¤Æ¡A¥H«K©ó«O¦s©M½s¿è
-[CreateAssetMenu(fileName = "NewObjectData", menuName = "Create SO/ObjectData")] // ¦b Unity ½s¿è¾¹ªº¥kÁäµæ³æ¤¤³Ğ«Ø·sªº ScriptableObject
+[Serializable] // æ¨™è¨˜é€™å€‹é¡åˆ¥å¯ä»¥è¢«åºåˆ—åŒ–ï¼Œä»¥ä¾¿æ–¼ä¿å­˜å’Œç·¨è¼¯
+[CreateAssetMenu(fileName = "NewObjectData", menuName = "Create SO/ObjectData")] // åœ¨ Unity ç·¨è¼¯å™¨çš„å³éµèœå–®ä¸­å‰µå»ºæ–°çš„ ScriptableObject
 public class ObjectData : ScriptableObject
 {
     
-    public string objectName;// ª««~¦WºÙ
+    public string objectName;// ç‰©å“åç¨±
 
-    [Multiline(5)] // ¦b Unity ½s¿è¾¹¤¤Åã¥Ü¦h¦æ¤å¥»®Ø¡AÅã¥Ü¦æ¼Æ¬° 5
+    [Multiline(5)] // åœ¨ Unity ç·¨è¼¯å™¨ä¸­é¡¯ç¤ºå¤šè¡Œæ–‡æœ¬æ¡†ï¼Œé¡¯ç¤ºè¡Œæ•¸ç‚º 5
 
     /// <summary>
-    /// ª««~ªº´y­z¤å¦r
+    /// ç‰©å“çš„æè¿°æ–‡å­—
     /// </summary>
     public string descriptionText;
 
-    // ª««~ªº°ß¤@ÃÑ§O½X
+    // ç‰©å“çš„å”¯ä¸€è­˜åˆ¥ç¢¼
     public int id;
 
     /// <summary>
-    /// ºc³y¨ç¼Æ¡Aªì©l¤Æª««~ªº ID ©M¦WºÙ¡C
+    /// æ§‹é€ å‡½æ•¸ï¼Œåˆå§‹åŒ–ç‰©å“çš„ ID å’Œåç¨±ã€‚
     /// </summary>
-    /// <param name="_id">ª««~ªº°ß¤@ÃÑ§O½X</param>
-    /// <param name="_objectName">ª««~ªº¦WºÙ</param>
+    /// <param name="_id">ç‰©å“çš„å”¯ä¸€è­˜åˆ¥ç¢¼</param>
+    /// <param name="_objectName">ç‰©å“çš„åç¨±</param>
     public ObjectData(int _id, string _objectName)
     {
-        this.id = _id;                    // ³]¸mª««~ªº°ß¤@ÃÑ§O½X
-        this.objectName = _objectName;    // ³]¸mª««~ªº¦WºÙ
-        this.descriptionText = null;      // Àq»{±¡ªp¤U´y­z¤å¦r¬° null
+        this.id = _id;                    // è¨­ç½®ç‰©å“çš„å”¯ä¸€è­˜åˆ¥ç¢¼
+        this.objectName = _objectName;    // è¨­ç½®ç‰©å“çš„åç¨±
+        this.descriptionText = null;      // é»˜èªæƒ…æ³ä¸‹æè¿°æ–‡å­—ç‚º null
     }
 
     /// <summary>
-    /// ­«¸üºc³y¨ç¼Æ¡Aªì©l¤Æª««~ªº ID¡B¦WºÙ©M´y­z¤å¦r¡C
+    /// é‡è¼‰æ§‹é€ å‡½æ•¸ï¼Œåˆå§‹åŒ–ç‰©å“çš„ IDã€åç¨±å’Œæè¿°æ–‡å­—ã€‚
     /// </summary>
-    /// <param name="_id">ª««~ªº°ß¤@ÃÑ§O½X</param>
-    /// <param name="_objectName">ª««~ªº¦WºÙ</param>
-    /// <param name="_descriptionText">ª««~ªº´y­z¤å¦r</param>
+    /// <param name="_id">ç‰©å“çš„å”¯ä¸€è­˜åˆ¥ç¢¼</param>
+    /// <param name="_objectName">ç‰©å“çš„åç¨±</param>
+    /// <param name="_descriptionText">ç‰©å“çš„æè¿°æ–‡å­—</param>
     public ObjectData(int _id, string _objectName, string _descriptionText)
     {
-        this.id = _id;                    // ³]¸mª««~ªº°ß¤@ÃÑ§O½X
-        this.objectName = _objectName;    // ³]¸mª««~ªº¦WºÙ
-        this.descriptionText = _descriptionText; // ³]¸mª««~ªº´y­z¤å¦r
+        this.id = _id;                    // è¨­ç½®ç‰©å“çš„å”¯ä¸€è­˜åˆ¥ç¢¼
+        this.objectName = _objectName;    // è¨­ç½®ç‰©å“çš„åç¨±
+        this.descriptionText = _descriptionText; // è¨­ç½®ç‰©å“çš„æè¿°æ–‡å­—
     }
 }

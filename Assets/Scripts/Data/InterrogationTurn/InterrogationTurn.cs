@@ -1,8 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InterrogationTurn
+
+public abstract class InterrogationTurn : ScriptableObject
 {
     public DialogueData beforeDialogue;
     public DialogueData successDialogue;
@@ -33,22 +34,22 @@ public abstract class InterrogationTurn
         successDialogue = _sucessDialogue;
         failDialogue = _failDialogue;
 
-        Debug.Log("Before: " + (beforeDialogue != null ? "²K¥[¦¨¥\" : "Null"));
-        Debug.Log("Success: " + (successDialogue != null ? "²K¥[¦¨¥\" : "Null"));
-        Debug.Log("Fail: " + (failDialogue != null ? "²K¥[¦¨¥\" : "Null"));
+        Debug.Log("Before: " + (beforeDialogue != null ? "æ·»åŠ æˆåŠŸ" : "Null"));
+        Debug.Log("Success: " + (successDialogue != null ? "æ·»åŠ æˆåŠŸ" : "Null"));
+        Debug.Log("Fail: " + (failDialogue != null ? "æ·»åŠ æˆåŠŸ" : "Null"));
     }
 
     
 
     /// <summary>
-    /// ºc«Ø¿ï¾Ü¼Ò¦¡
+    /// æ§‹å»ºé¸æ“‡æ¨¡å¼
     /// </summary>
     public virtual void BuildChooseMode()
     {
 
     }
     /// <summary>
-    /// ³Ó§Q¼úÀy
+    /// å‹åˆ©çå‹µ
     /// </summary>
     public virtual void VictoryAward()
     {
@@ -56,7 +57,7 @@ public abstract class InterrogationTurn
     }
 
     /// <summary>
-    /// ¥¢±Ñ¼úÀy
+    /// å¤±æ•—çå‹µ
     /// </summary>
     public virtual void FailAward()
     {

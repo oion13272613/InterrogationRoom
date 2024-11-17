@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ºŞ²zª±®aªº®É¶¡ª¬ºA¡A¥]¬A³Ì¤j®É¶¡©M·í«e®É¶¡¡C´£¨Ñ³]¸m¡B´î¤Ö©M­«¸m®É¶¡ªº¥\¯à¡C
+/// ç®¡ç†ç©å®¶çš„æ™‚é–“ç‹€æ…‹ï¼ŒåŒ…æ‹¬æœ€å¤§æ™‚é–“å’Œç•¶å‰æ™‚é–“ã€‚æä¾›è¨­ç½®ã€æ¸›å°‘å’Œé‡ç½®æ™‚é–“çš„åŠŸèƒ½ã€‚
 /// </summary>
 [Serializable]
 public class PlayerTime
 {
-    [SerializeField] private int maxTime;// ³Ì¤j®É¶¡¡Gªí¥Üª±®a¥i¥H¾Ö¦³ªº³Ì¤j®É¶¡¶q   
-    [SerializeField] private int currentTime;// ·í«e®É¶¡¡Gªí¥Üª±®a·í«e¾Ö¦³ªº®É¶¡¶q
+    [SerializeField] private int maxTime;// æœ€å¤§æ™‚é–“ï¼šè¡¨ç¤ºç©å®¶å¯ä»¥æ“æœ‰çš„æœ€å¤§æ™‚é–“é‡   
+    [SerializeField] private int currentTime;// ç•¶å‰æ™‚é–“ï¼šè¡¨ç¤ºç©å®¶ç•¶å‰æ“æœ‰çš„æ™‚é–“é‡
 
     /// <summary>
-    /// ³Ì¤j®É¶¡ªº¤½¶}¥uÅªÄİ©Ê
+    /// æœ€å¤§æ™‚é–“çš„å…¬é–‹åªè®€å±¬æ€§
     /// </summary>
     public int MaxTime
     {
@@ -21,7 +21,7 @@ public class PlayerTime
     }
 
     /// <summary>
-    /// ·í«e®É¶¡ªº¤½¶}¥uÅªÄİ©Ê
+    /// ç•¶å‰æ™‚é–“çš„å…¬é–‹åªè®€å±¬æ€§
     /// </summary>
     public int CurrentTime
     {
@@ -30,24 +30,24 @@ public class PlayerTime
     }
    
     /// <summary>
-    /// ³]¸m®É¶¡¡Aªì©l¤Æ³Ì¤j®É¶¡¨Ã±N·í«e®É¶¡³]¸m¬°³Ì¤j®É¶¡
+    /// è¨­ç½®æ™‚é–“ï¼Œåˆå§‹åŒ–æœ€å¤§æ™‚é–“ä¸¦å°‡ç•¶å‰æ™‚é–“è¨­ç½®ç‚ºæœ€å¤§æ™‚é–“
     /// </summary>
-    /// <param name="max">ªì©l¤Æªº³Ì¤j®É¶¡­È</param>
+    /// <param name="max">åˆå§‹åŒ–çš„æœ€å¤§æ™‚é–“å€¼</param>
     public void SetTime(int max)
     {
-        maxTime = max;       // ³]¸m³Ì¤j®É¶¡¬°¶Ç¤Jªº­È
-        currentTime = maxTime; // ±N·í«e®É¶¡³]¸m¬°³Ì¤j®É¶¡
+        maxTime = max;       // è¨­ç½®æœ€å¤§æ™‚é–“ç‚ºå‚³å…¥çš„å€¼
+        currentTime = maxTime; // å°‡ç•¶å‰æ™‚é–“è¨­ç½®ç‚ºæœ€å¤§æ™‚é–“
     }
 
     /// <summary>
-    /// ´î¤Ö·í«e®É¶¡
+    /// æ¸›å°‘ç•¶å‰æ™‚é–“
     /// </summary>
-    /// <param name="value">­n´î¤Öªº®É¶¡¶q</param>
+    /// <param name="value">è¦æ¸›å°‘çš„æ™‚é–“é‡</param>
     public void ReduceTime(int value)
     {
-        currentTime -= value; // ´î¤Ö·í«e®É¶¡
+        currentTime -= value; // æ¸›å°‘ç•¶å‰æ™‚é–“
 
-        // ¦pªG·í«e®É¶¡¤p©ó©Îµ¥©ó0¡A«h±N¨ä³]¸m¬°0
+        // å¦‚æœç•¶å‰æ™‚é–“å°æ–¼æˆ–ç­‰æ–¼0ï¼Œå‰‡å°‡å…¶è¨­ç½®ç‚º0
         if (currentTime <= 0)
         {
             currentTime = 0;
@@ -55,10 +55,10 @@ public class PlayerTime
     }
 
     /// <summary>
-    /// ­«¸m·í«e®É¶¡¬°³Ì¤j®É¶¡
+    /// é‡ç½®ç•¶å‰æ™‚é–“ç‚ºæœ€å¤§æ™‚é–“
     /// </summary>
     public void ResetTime()
     {
-        currentTime = maxTime; // ±N·í«e®É¶¡³]¸m¬°³Ì¤j®É¶¡
+        currentTime = maxTime; // å°‡ç•¶å‰æ™‚é–“è¨­ç½®ç‚ºæœ€å¤§æ™‚é–“
     }
 }

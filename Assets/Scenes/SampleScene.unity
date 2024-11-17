@@ -1089,7 +1089,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc07ced47875fa043b3f367c22db6ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csvFile: {fileID: 4900000, guid: a9f5ae4ad9ea6a34eb9f4316b8afff00, type: 3}
+  csvFile: {fileID: 4900000, guid: 40910280edbfe0343965138eae838f27, type: 3}
+  mainCSVPath: Excel/Ch1_01
+  dialogueFolderPath: Excel/
 --- !u!4 &790185886
 Transform:
   m_ObjectHideFlags: 0
@@ -1544,7 +1546,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterDBList:
-  - {fileID: 11400000, guid: 751600112fc8d0946985b02a4e218d46, type: 2}
   - {fileID: 11400000, guid: c57833d5476543448b745dc4e2e33a61, type: 2}
   - {fileID: 11400000, guid: c913972abd77ddf4985d785d8086e0fd, type: 2}
 --- !u!1 &1251714194
@@ -1726,7 +1727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryWindow: {fileID: 269113437}
-  inventoryBotton: {fileID: 1251714194}
+  inventoryButton: {fileID: 1251714194}
   playerTime:
     maxTime: 0
     currentTime: 0
@@ -1737,9 +1738,9 @@ MonoBehaviour:
   initialOpponentHeart: 5
   TimeText: {fileID: 239523361}
   HeartText: {fileID: 337540939}
-  textDataList:
-  - {fileID: 11400000, guid: 8722d0b1c8a9a6f49a7e57bd00af08e1, type: 2}
-  currentDialogueData: {fileID: 0}
+  interrogationTurns:
+  - {fileID: 11400000, guid: 908c5eb8405cac64eab5b8c9b2f5eb85, type: 2}
+  currentTurn: {fileID: 0}
 --- !u!1 &1522469833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,6 +3001,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1343827109}
+    - target: {fileID: 6900660504987432012, guid: 64e1771ff2672c945a6829bd85df5179, type: 3}
+      propertyPath: m_Name
+      value: CloseInventoryWindowButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6900660505256152943, guid: 64e1771ff2672c945a6829bd85df5179, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1

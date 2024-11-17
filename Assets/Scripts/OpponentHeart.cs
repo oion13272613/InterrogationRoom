@@ -1,20 +1,20 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ºŞ²z¹ï¤âªº¦å¶q¡A¥]¬A³Ì¤j¦å¶q©M·í«e¦å¶q¡C´£¨Ñ³]¸m¡B´î¤Ö©M­«¸m¦å¶qªº¥\¯à¡C
+/// ç®¡ç†å°æ‰‹çš„è¡€é‡ï¼ŒåŒ…æ‹¬æœ€å¤§è¡€é‡å’Œç•¶å‰è¡€é‡ã€‚æä¾›è¨­ç½®ã€æ¸›å°‘å’Œé‡ç½®è¡€é‡çš„åŠŸèƒ½ã€‚
 /// </summary>
 [Serializable]
 public class OpponentHeart
 {
 
-    [SerializeField] private int maxHeart;// ³Ì¤j¦å¶q¡Gªí¥Ü¹ï¤â¥i¥H¾Ö¦³ªº³Ì¤j¦å¶q    
-    [SerializeField] private int currentHeart;// ·í«e¦å¶q¡Gªí¥Ü¹ï¤â·í«e¾Ö¦³ªº¦å¶q
+    [SerializeField] private int maxHeart;// æœ€å¤§è¡€é‡ï¼šè¡¨ç¤ºå°æ‰‹å¯ä»¥æ“æœ‰çš„æœ€å¤§è¡€é‡    
+    [SerializeField] private int currentHeart;// ç•¶å‰è¡€é‡ï¼šè¡¨ç¤ºå°æ‰‹ç•¶å‰æ“æœ‰çš„è¡€é‡
 
     /// <summary>
-    /// ³Ì¤j¦å¶qªº¤½¶}¥uÅªÄİ©Ê
+    /// æœ€å¤§è¡€é‡çš„å…¬é–‹åªè®€å±¬æ€§
     /// </summary>
     public int MaxHeart
     {
@@ -22,7 +22,7 @@ public class OpponentHeart
     }
 
     /// <summary>
-    /// ·í«e¦å¶qªº¤½¶}¥uÅªÄİ©Ê
+    /// ç•¶å‰è¡€é‡çš„å…¬é–‹åªè®€å±¬æ€§
     /// </summary>
     public int CurrentHeart
     {
@@ -31,24 +31,24 @@ public class OpponentHeart
     }
 
     /// <summary>
-    /// ³]¸m¦å¶q¡Aªì©l¤Æ³Ì¤j¦å¶q¨Ã±N·í«e¦å¶q³]¸m¬°³Ì¤j¦å¶q
+    /// è¨­ç½®è¡€é‡ï¼Œåˆå§‹åŒ–æœ€å¤§è¡€é‡ä¸¦å°‡ç•¶å‰è¡€é‡è¨­ç½®ç‚ºæœ€å¤§è¡€é‡
     /// </summary>
-    /// <param name="max">ªì©l¤Æªº³Ì¤j¦å¶q­È</param>
+    /// <param name="max">åˆå§‹åŒ–çš„æœ€å¤§è¡€é‡å€¼</param>
     public void SetHeart(int max)
     {
-        maxHeart = max;       // ³]¸m³Ì¤j¦å¶q¬°¶Ç¤Jªº­È
-        currentHeart = maxHeart; // ±N·í«e¦å¶q³]¸m¬°³Ì¤j¦å¶q
+        maxHeart = max;       // è¨­ç½®æœ€å¤§è¡€é‡ç‚ºå‚³å…¥çš„å€¼
+        currentHeart = maxHeart; // å°‡ç•¶å‰è¡€é‡è¨­ç½®ç‚ºæœ€å¤§è¡€é‡
     }
 
     /// <summary>
-    /// ´î¤Ö·í«e¦å¶q
+    /// æ¸›å°‘ç•¶å‰è¡€é‡
     /// </summary>
-    /// <param name="value">­n´î¤Öªº¦å¶q¶q</param>
+    /// <param name="value">è¦æ¸›å°‘çš„è¡€é‡é‡</param>
     public void ReduceHeart(int value)
     {
-        currentHeart -= value; // ´î¤Ö·í«e¦å¶q
+        currentHeart -= value; // æ¸›å°‘ç•¶å‰è¡€é‡
 
-        // ¦pªG·í«e¦å¶q¤p©ó©Îµ¥©ó0¡A«h±N¨ä³]¸m¬°0
+        // å¦‚æœç•¶å‰è¡€é‡å°æ–¼æˆ–ç­‰æ–¼0ï¼Œå‰‡å°‡å…¶è¨­ç½®ç‚º0
         if (currentHeart <= 0)
         {
             currentHeart = 0;
@@ -56,10 +56,10 @@ public class OpponentHeart
     }
 
     /// <summary>
-    /// ­«¸m·í«e¦å¶q¬°³Ì¤j¦å¶q
+    /// é‡ç½®ç•¶å‰è¡€é‡ç‚ºæœ€å¤§è¡€é‡
     /// </summary>
     public void ResetHeart()
     {
-        currentHeart = maxHeart; // ±N·í«e¦å¶q³]¸m¬°³Ì¤j¦å¶q
+        currentHeart = maxHeart; // å°‡ç•¶å‰è¡€é‡è¨­ç½®ç‚ºæœ€å¤§è¡€é‡
     }
 }

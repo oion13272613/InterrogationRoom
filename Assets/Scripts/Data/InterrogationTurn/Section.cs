@@ -1,11 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Part
+public class Section
 {
     public List<InterrogationTurn> ITList;
-    public int partID;
+    public int SectionID;
     
 
 }

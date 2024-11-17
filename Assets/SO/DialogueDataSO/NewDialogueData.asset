@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8ca03c45235ca44b7dbdcf660a487c, type: 3}
+  m_Name: NewDialogueData
+  m_EditorClassIdentifier: 
+  speechList:
+  - speaker: {fileID: 11400000, guid: c57833d5476543448b745dc4e2e33a61, type: 2}
+    content:
+    - line: "\u4F60\u4E0D\u9858\u610F\u8AAA\u5BE6\u8A71\u55CE\uFF1F"
+    - line: "\u4F60\u7684\u540C\u4F34\u5DF2\u7D93\u8AAA\u4E86\u5594"
+    - line: "(\u771F\u662F\u96E3\u7E8F......)"
+    isRead: 0
+  - speaker: {fileID: 11400000, guid: c913972abd77ddf4985d785d8086e0fd, type: 2}
+    content:
+    - line: "\u4F60\u662F\u6AA2\u5BDF\u5B98\u5427\uFF1F"
+    - line: "\u80FD\u6C7A\u5B9A\u662F\u4E0D\u662F\u8B49\u64DA\u7684\u53EA\u6709\u8B49\u64DA\u554A"
+    isRead: 0
+  - speaker: {fileID: 11400000, guid: c57833d5476543448b745dc4e2e33a61, type: 2}
+    content:
+    - line: "(\u8AAA\u7684\u4E5F\u662F\u3002)"
+    - line: "\u90A3\u6211\u5C31\u62FF\u51FA\u8B49\u64DA\u5427\u3002"
+    isRead: 0
+  currentspeech:
+    speaker: {fileID: 11400000, guid: c57833d5476543448b745dc4e2e33a61, type: 2}
+    content:
+    - line: AAAAAAAAAAAA
+    - line: BBBBBBBBBBBBBB
+    isRead: 0

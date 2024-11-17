@@ -2,44 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 /// <summary>
-/// ¥D¨t²Î¡GºŞ²z¹ï¸Ü¡B®É¶¡©M¦å¶qªº¥D­nÅŞ¿è
+/// ä¸»ç³»çµ±ï¼šç®¡ç†å°è©±ã€æ™‚é–“å’Œè¡€é‡çš„ä¸»è¦é‚è¼¯
 /// </summary>
 public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
 {
-    // ª««~Äæµøµ¡ªº GameObject¡A±±¨îª««~ÄæªºÅã¥Ü»PÁôÂÃ
+    // ç‰©å“æ¬„è¦–çª—çš„ GameObjectï¼Œæ§åˆ¶ç‰©å“æ¬„çš„é¡¯ç¤ºèˆ‡éš±è—
     public GameObject inventoryWindow;
-    public GameObject inventoryBotton;
+    public GameObject inventoryButton;
 
-    // ª±®a®É¶¡ª¬ºA
+    // ç©å®¶æ™‚é–“ç‹€æ…‹
     public PlayerTime playerTime = new PlayerTime();
 
-    // ¹ï¤â¦å¶qª¬ºA
+    // å°æ‰‹è¡€é‡ç‹€æ…‹
     public OpponentHeart opponentHeart = new OpponentHeart();
 
-    // ªì©lª±®a®É¶¡©M¹ï¤â¦å¶q
+    // åˆå§‹ç©å®¶æ™‚é–“å’Œå°æ‰‹è¡€é‡
     public int initialPlayerTime;
     public int initialOpponentHeart;
 
-    // ¥Î©óÅã¥Üª±®a®É¶¡©M¹ï¤â¦å¶qªº UI ¤¸¥ó
+    // ç”¨æ–¼é¡¯ç¤ºç©å®¶æ™‚é–“å’Œå°æ‰‹è¡€é‡çš„ UI å…ƒä»¶
     public TextMeshProUGUI TimeText;
     public TextMeshProUGUI HeartText;
 
-    // ¹ï¸Ü¼Æ¾Úªº¦Cªí
-    public List<DialogueData> textDataList;
+    // å°è©±æ•¸æ“šçš„åˆ—è¡¨
+    [SerializeField]
+    public List<ObjectSlelectIT> interrogationTurns = new List<ObjectSlelectIT>();
 
-    // ·í«e©M¤U¤@­Ó¹ï¸Ü¼Æ¾Ú
-    public DialogueData currentDialogueData;
-    private DialogueData nextTextData;
+    // ç•¶å‰å’Œä¸‹ä¸€å€‹å°è©±æ•¸æ“š
+    public ObjectSlelectIT currentTurn;
+    private ObjectSlelectIT nextTurn;
 
-    // «e¤@­Ó¹ï¸Ü¼Æ¾Ú
-    private DialogueData previousTextData;
+    // å‰ä¸€å€‹å°è©±æ•¸æ“š
+    private ObjectSlelectIT previousTurn;
     private bool isTalking = false;
 
-    // ±±¨î¬O§_¦b¶i¦æ¹ï¸Ü¡A¨Ã®Ú¾Úª¬ºA³]¸m«ö¶sªº±Ò¥Î©Î¸T¥Î
+    // æ§åˆ¶æ˜¯å¦åœ¨é€²è¡Œå°è©±ï¼Œä¸¦æ ¹æ“šç‹€æ…‹è¨­ç½®æŒ‰éˆ•çš„å•Ÿç”¨æˆ–ç¦ç”¨
     public bool IsTalking
     {
         get { return isTalking; }
@@ -51,35 +51,48 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     }
 
     /// <summary>
-    /// ªì©l¤Æ³]¸m
+    /// åˆå§‹åŒ–è¨­ç½®
     /// </summary>
     void Start()
     {
         IsTalking = false;
 
-        // ³]¸mª±®a©M¹ï¤âªºªì©lª¬ºA
+        // è¨­ç½®ç©å®¶å’Œå°æ‰‹çš„åˆå§‹ç‹€æ…‹
         ShowState();
 
-        // ÁôÂÃª««~Äæµøµ¡
+        // éš±è—ç‰©å“æ¬„è¦–çª—
         inventoryWindow.SetActive(false);
 
-        // ³]¸m·í«e¹ï¸Ü¼Æ¾Ú¬°¦Cªí¤¤ªº²Ä¤@­Ó¤¸¯À
-        currentDialogueData = textDataList[0];
+        //è¨­ç½®ç•¶å‰å°è©±æ•¸æ“šç‚ºåˆ—è¡¨ä¸­çš„ç¬¬ä¸€å€‹å…ƒç´ 
+        //if (interrogationTurns.Count > 0)
+        //{
+        //    currentTurn = interrogationTurns[0];
+        //    RunCurrentDialogue();
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("å°è©±åˆ—è¡¨ç‚ºç©º");
+        //}
 
-        // ¶}©l°õ¦æ·í«e¹ï¸Ü
-        RunCurentDialogue();
+            IsTalking = true;
+            DialogueSystem.instance.SetDialogue(IT_DialogueData_CSVReader.instance.CSVToIT(1).beforeDialogue);
+            DialogueSystem.instance.StartDialogue();
     }
 
     /// <summary>
-    /// ¨C´V§ó·sª±®a®É¶¡©M¹ï¤â¦å¶qªºª¬ºAÅã¥Ü
+    /// æ¯å¹€æ›´æ–°ç©å®¶æ™‚é–“å’Œå°æ‰‹è¡€é‡çš„ç‹€æ…‹é¡¯ç¤º
     /// </summary>
     void Update()
     {
         ShowState();
     }
 
+
+
+
+
     /// <summary>
-    /// Åã¥Üª««~Äæµøµ¡
+    /// é¡¯ç¤ºç‰©å“æ¬„è¦–çª—
     /// </summary>
     public void OpenInventoryWindow()
     {
@@ -87,7 +100,7 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     }
 
     /// <summary>
-    /// ÁôÂÃª««~Äæµøµ¡
+    /// éš±è—ç‰©å“æ¬„è¦–çª—
     /// </summary>
     public void CloseInventoryWindow()
     {
@@ -95,16 +108,16 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     }
 
     /// <summary>
-    /// §ó·sÅã¥Üªºª±®a®É¶¡©M¹ï¤â¦å¶q
+    /// æ›´æ–°é¡¯ç¤ºçš„ç©å®¶æ™‚é–“å’Œå°æ‰‹è¡€é‡
     /// </summary>
     public void ShowState()
     {
-        TimeText.text = string.Format("{0}/{1}", playerTime.CurrentTime.ToString(), playerTime.MaxTime.ToString());
-        HeartText.text = string.Format("{0}/{1}", opponentHeart.CurrentHeart.ToString(), opponentHeart.MaxHeart.ToString());
+        TimeText.text = string.Format("{0}/{1}", playerTime.CurrentTime, playerTime.MaxTime);
+        HeartText.text = string.Format("{0}/{1}", opponentHeart.CurrentHeart, opponentHeart.MaxHeart);
     }
 
     /// <summary>
-    /// ´î¤Öª±®a®É¶¡
+    /// æ¸›å°‘ç©å®¶æ™‚é–“
     /// </summary>
     public void ReduceTime()
     {
@@ -112,7 +125,7 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     }
 
     /// <summary>
-    /// ´î¤Ö¹ï¤â¦å¶q
+    /// æ¸›å°‘å°æ‰‹è¡€é‡
     /// </summary>
     public void ReduceHeart()
     {
@@ -120,137 +133,128 @@ public class MainSystem : MonoSingleton<MainSystem>, IDataPersistence
     }
 
     /// <summary>
-    /// ®Ú¾Úª«¥ó ID ´£¥æ¹ï¸Ü¿ï¾Ü
+    /// æ ¹æ“šç‰©ä»¶ ID æäº¤å°è©±é¸æ“‡
     /// </summary>
-    /// <param name="id">¿ï¾Üªºª«¥ó ID</param>
+    /// <param name="id">é¸æ“‡çš„ç‰©ä»¶ ID</param>
     public void SubmitObjectID(int id)
     {
         CloseInventoryWindow();
 
-        // ÀË¬d´£¥æªº ID ¬O§_¤Ç°t·í«e¹ï¸Ü¼Æ¾Úªº¥¿½T ID
-        if (currentDialogueData.ObjectTrueID == id)
+        // æª¢æŸ¥æäº¤çš„ ID æ˜¯å¦åŒ¹é…ç•¶å‰çš„æˆåŠŸå°è©±
+        if (currentTurn.objectID == id)
         {
-            // ¤Ç°t«h¿ï¾Ü¤U¤@­Ó¥¿½T¹ï¸Ü
-            nextTextData = FindTextDataFromList(currentDialogueData.textTrueID);
+            nextTurn.beforeDialogue = currentTurn.successDialogue;
             ReduceHeart();
         }
         else
         {
-            // ¤£¤Ç°t«h¿ï¾Ü¿ù»~¹ï¸Ü
-            nextTextData = FindTextDataFromList(currentDialogueData.textFalseID);
+            nextTurn.beforeDialogue = currentTurn.failDialogue;
             ReduceTime();
         }
 
-        previousTextData = currentDialogueData;
+        previousTurn = currentTurn;
+        currentTurn = nextTurn;
 
-        // §ó·s·í«e¹ï¸Ü¼Æ¾Ú
-        currentDialogueData = nextTextData;
-
-        // ¶}©l·sªº¹ï¸Ü
-        RunCurentDialogue();
+        RunCurrentDialogue();
     }
 
     /// <summary>
-    /// ®Ú¾Ú ID ¦b¹ï¸Ü¼Æ¾Ú¦Cªí¤¤¬d§ä¹ïÀ³ªº DialogueGroupData
+    /// æ ¹æ“š ID åœ¨å°è©±æ•¸æ“šåˆ—è¡¨ä¸­æŸ¥æ‰¾å°æ‡‰çš„ ObjectSlelectIT
     /// </summary>
-    /// <param name="id">¹ï¸Ü¼Æ¾Úªº ID</param>
-    /// <returns>§ä¨ìªº¹ï¸Ü¼Æ¾Ú</returns>
-    private DialogueGroupData FindTextDataFromList(int id)
+    private ObjectSlelectIT FindTurnFromList(int id)
     {
-        DialogueGroupData textData = null;
-
-        foreach (DialogueGroupData item in textDataList)
+        foreach (ObjectSlelectIT item in interrogationTurns)
         {
-            if (item.textID == id)
-            {
-                textData = item;
-                break;
-            }
+            if (item.turnID == id)
+                return item;
         }
-
-        return textData;
+        return null;
     }
 
     /// <summary>
-    /// ·í«e¹ï¸Ü²Õµ²§ô®Éªº³B²z
+    /// ç•¶å‰å°è©±çµ„çµæŸæ™‚çš„è™•ç†
     /// </summary>
-    public void DialogueGroupOver()
+    public void DialogueTurnOver()
     {
-        Debug.Log("¹ï¸Ü²Õµ²§ô");
+        Debug.Log("å°è©±çµ„çµæŸ");
 
-        if (currentDialogueData == null) return;
+        if (currentTurn == null) return;
 
-        if (!currentDialogueData.isCorrectText)
+        if (currentTurn.beforeDialogue == currentTurn.failDialogue)
         {
-            Debug.Log("­«½Æ¹ï¸Ü");
-            currentDialogueData = previousTextData;
-            RunCurentDialogue();
+            Debug.Log("å›ç­”éŒ¯èª¤ï¼Œé‡è¤‡ä¹‹å‰çš„å°è©±");
+            currentTurn = previousTurn;
+            RunCurrentDialogue();
         }
         else
         {
             IsTalking = false;
+            SetButtonActive(true);
         }
     }
 
     /// <summary>
-    /// ±±¨îª««~Äæ«ö¶sªºÅã¥Üª¬ºA
+    /// æ§åˆ¶ç‰©å“æ¬„æŒ‰éˆ•çš„é¡¯ç¤ºç‹€æ…‹
     /// </summary>
-    /// <param name="active">«ö¶s¬O§_Åã¥Ü</param>
     public void SetButtonActive(bool active)
     {
-        inventoryBotton.SetActive(active);
+        inventoryButton.SetActive(active);
     }
 
     /// <summary>
-    /// ­«·s¼½©ñ¹ï¸Ü
+    /// é‡æ–°æ’­æ”¾å°è©±
     /// </summary>
     public void ReplayDialogue()
     {
-        RunCurentDialogue();
+        RunCurrentDialogue();
     }
 
     /// <summary>
-    /// ³]¸m¨Ã¶}©l°õ¦æ·í«e¹ï¸Ü
+    /// è¨­ç½®ä¸¦é–‹å§‹åŸ·è¡Œç•¶å‰å°è©±
     /// </summary>
-    private void RunCurentDialogue()
+    private void RunCurrentDialogue()
     {
+        if (currentTurn == null || currentTurn.beforeDialogue == null)
+        {
+            Debug.LogError("ç•¶å‰å°è©±æˆ–å…¶æ•¸æ“šæœªåˆå§‹åŒ–ï¼");
+            return;
+        }
         IsTalking = true;
-        DialogueSystem.instance.SetDialogue(currentDialogueData);
+        DialogueSystem.instance.SetDialogue(currentTurn.beforeDialogue);
         DialogueSystem.instance.StartDialogue();
     }
 
     /// <summary>
-    /// ±q¦sÀÉ¤¤¥[¸ü¸ê®Æ
+    /// å¾å­˜æª”ä¸­åŠ è¼‰è³‡æ–™
     /// </summary>
     public void LoadData(GameData data)
     {
-        this.playerTime = data.playerTime;
-        this.opponentHeart = data.opponentHeart;
+        playerTime = data.playerTime;
+        opponentHeart = data.opponentHeart;
         ShowState();
 
-        //®Ú¾Ú¦sÀÉªº¹ï¸ÜID¡A§ä¨ì¨Ã«ì´_·í«e¹ï¸Ü¼Æ¾Ú
-        this.currentDialogueData = FindTextDataFromList(data.currentDialogueDataID);
+        currentTurn = FindTurnFromList(data.currentDialogueDataID);
 
-        if (this.currentDialogueData == null && textDataList.Count > 0)
+        if (currentTurn == null && interrogationTurns.Count > 0)
         {
-            Debug.LogWarning("§ä¤£¨ì¹ïÀ³ªº¹ï¸Ü¼Æ¾Ú¡A³]¸m¬°Àq»{¹ï¸Ü");
-            this.currentDialogueData = textDataList[0];
+            Debug.LogWarning("æ‰¾ä¸åˆ°å°æ‡‰çš„å°è©±æ•¸æ“šï¼Œè¨­ç½®ç‚ºé»˜èªå°è©±");
+            currentTurn = interrogationTurns[0];
         }
 
-        RunCurentDialogue();
+        RunCurrentDialogue();
     }
 
     /// <summary>
-    /// «O¦s¸ê®Æ¨ì GameData ¤¤
+    /// ä¿å­˜è³‡æ–™åˆ° GameData ä¸­
     /// </summary>
     public void SaveData(ref GameData data)
     {
-        data.playerTime = this.playerTime;
-        data.opponentHeart = this.opponentHeart;
+        data.playerTime = playerTime;
+        data.opponentHeart = opponentHeart;
 
-        if (currentDialogueData != null)
+        if (currentTurn != null)
         {
-            data.currentDialogueDataID = currentDialogueData.currentspeech.speaker.ID;
+            data.currentDialogueDataID = currentTurn.turnID;
         }
     }
 }
